@@ -10,6 +10,7 @@ Dieses Projekt demonstriert die Verwendung von Promises und Async/Await für das
     - [Funktionen](#funktionen)
   - [Installation](#installation)
   - [Verwendung](#verwendung)
+  - [Hinweis](#hinweis)
 
 ## Projektübersicht
 
@@ -20,12 +21,12 @@ Dieses Projekt enthält zwei Hauptfunktionen:
 
 ### Funktionen
 
-1. **`writeFile(filename, data)`**
+1. **`writeFile(filename, data)` oder `writeFileSync(filename, data)`**
    - Schreibt die übergebenen JSON-Daten (`data`) in die angegebene Datei (`filename`).
    - Nutzt Promises und Async/Await für asynchrone Operationen.
    - Gibt eine Erfolgsmeldung aus, wenn das Schreiben erfolgreich war, und behandelt Fehler.
 
-2. **`readFile(filename)`**
+2. **`readFile(filename)` oder `readFileSync(filename)`**
    - Liest die Daten aus der angegebenen Datei (`filename`).
    - Wandelt die JSON-Daten in ein JavaScript-Objekt um und gibt es zurück.
    - Gibt eine Erfolgsmeldung aus, wenn das Lesen erfolgreich war, und behandelt Fehler.
@@ -55,6 +56,11 @@ Dieses Projekt enthält zwei Hauptfunktionen:
 node index.js 
 ```
 
+## Hinweis
+
+**Asynchrone Funktionen**: Verwendet await beim Aufruf der asynchronen Funktionen innerhalb einer async-Funktion.
+
+**Synchrone Funktionen**: Sie blockieren den Thread bis die Dateioperation abgeschlossen ist, daher sollten sie sparsam verwendet werden, insbesondere bei großen Dateien oder intensiven Operationen.
 
 
 

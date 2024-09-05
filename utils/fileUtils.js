@@ -11,20 +11,31 @@ import fs from "fs";
 */
 
 // Funktion zum Schreiben der Datei mit Promises
-export const writeFile = async (filename, data) => {
+// Für asynchronen Code
+// export const writeFile = async (filename, data) => {
+//   try {
+//     const message = await new Promise((resolve, reject) => {
+//       fs.writeFile(filename, data, "utf8", (err) => {
+//         if (err) {
+//           reject(`Fehler beim Schreiben der Datei: ${err}`);
+//         } else {
+//           resolve("Datei wurde erfolgreich geschrieben.");
+//         }
+//       });
+//     });
+//     console.log(message); // Nutze die Erfolgsmeldung hier
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
+
+// Funktion zum Schreiben der Datei synchron
+export const writeFileSync = (filename, data) => {
   try {
-    const message = await new Promise((resolve, reject) => {
-      fs.writeFile(filename, data, "utf8", (err) => {
-        if (err) {
-          reject(`Fehler beim Schreiben der Datei: ${err}`);
-        } else {
-          resolve("Datei wurde erfolgreich geschrieben.");
-        }
-      });
-    });
-    console.log(message); // Nutze die Erfolgsmeldung hier
+    fs.writeFileSync(filename, data, "utf8");
+    console.log("Datei wurde erfolgreich geschrieben.");
   } catch (error) {
-    console.error(error);
+    console.error(`Fehler beim Schreiben der Datei: ${error}`);
   }
 };
 
@@ -39,21 +50,34 @@ Ablauf in readFile:
 */
 
 // Funktion zum Lesen der Datei mit Promises
-export const readFile = async (filename) => {
+// Für asynchronen Code
+// export const readFile = async (filename) => {
+//   try {
+//     const data = await new Promise((resolve, reject) => {
+//       fs.readFile(filename, "utf8", (err, data) => {
+//         if (err) {
+//           reject(`Fehler beim Lesen der Datei: ${err}`);
+//         } else {
+//           resolve(data);
+//         }
+//       });
+//     });
+//     console.log("Datei wurde erfolgreich gelesen.");
+//     return JSON.parse(data); // Die Daten werden als Objekt zurückgegeben
+//   } catch (error) {
+//     console.error(error);
+//     return null; // Rückgabe von null im Fehlerfall, falls erforderlich
+//   }
+// };
+
+// Funktion zum Lesen der Datei synchron
+export const readFileSync = (filename) => {
   try {
-    const data = await new Promise((resolve, reject) => {
-      fs.readFile(filename, "utf8", (err, data) => {
-        if (err) {
-          reject(`Fehler beim Lesen der Datei: ${err}`);
-        } else {
-          resolve(data);
-        }
-      });
-    });
+    const data = fs.readFileSync(filename, "utf8");
     console.log("Datei wurde erfolgreich gelesen.");
     return JSON.parse(data); // Die Daten werden als Objekt zurückgegeben
   } catch (error) {
-    console.error(error);
-    return null; // Rückgabe von null im Fehlerfall, falls erforderlich
+    console.error(`Fehler beim Lesen der Datei: ${error}`);
+    return null; // Rückgabe von null im Fehlerfall
   }
 };
